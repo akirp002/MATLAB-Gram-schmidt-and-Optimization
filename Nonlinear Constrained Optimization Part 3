@@ -1,0 +1,15 @@
+x0 = [0,0,0];
+LB = [0;0;0];
+A = [];
+B = [];
+Aeq =[];
+Beq = [];
+UB = [];
+[x] = fmincon(@(x) objfun(x),x0,A,B,Aeq,Beq,LB,UB,@(x) nlcon(x));
+% fval is giving the minima but we want to find the max...so:
+% fmax = -fval OR -1* objective_function where:
+% objective_function = -1* actual_objective_function
+%
+x
+
+-1*objfun(x)
