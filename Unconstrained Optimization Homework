@@ -1,0 +1,35 @@
+syms x y
+f = 3*x^4 + 3*x^2*y - y^3;
+G = gradient(f,[x,y]); 
+eqns = [G(1) ==0,G(2) ==0];
+[an_x,an_y] = solve(eqns,[x y]);
+solutions = [an_x an_y];
+solutions
+LOOL = double(solutions);
+hess = hessian(f,[x y])
+fprintf("check critical points")
+A_1 = det(hess);
+A_0 = 6*x*y;
+fprintf('\n') 
+fprintf("Check (0,0)")
+x = subs(A_1,0);
+Prime_1 = subs(x,0)
+y = subs(A_0,0);
+Prime_0 = subs(y,0)
+fprintf('\n')
+fprintf("hence (0,0) is indetereminate and neither a max or min")
+fprintf('\n') 
+fprintf("Check (-1/2,-1/2)")
+fprintf('\n') 
+x = subs(A_1,-1/2);
+Prime_1 = subs(x,-1/2)
+y = subs(A_0,-1/2);
+Prime_0 = subs(y,-1/2)
+fprintf("hence (-1/2,-1/2) is pos defininate a local min ")
+fprintf('\n') 
+fprintf("Check (1/2,-1/2)")
+x = subs(A_1,1/2);
+Prime_1 = subs(x,-1/2)
+y = subs(A_0,1/2);
+Prime_0 = subs(y,-1/2)
+fprintf("hence (1/2,-1/2) is a posotive def and a local min")
